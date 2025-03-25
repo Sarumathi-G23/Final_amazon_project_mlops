@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Amazon Review Sentiment</title>
+</head>
+<body>
+    <h2>Amazon Review Sentiment Analysis</h2>
+    <form action="/predict" method="post">
+        <textarea name="review" rows="4" cols="50" placeholder="Enter your review..."></textarea><br>
+        <button type="submit">Analyze Sentiment</button>
+    </form>
+    {% if sentiment %}
+        <h3>Prediction: {{ sentiment }}</h3>
+    {% endif %}
+</body>
+</html>
