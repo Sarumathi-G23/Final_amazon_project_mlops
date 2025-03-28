@@ -1,0 +1,5 @@
+outs:
+- md5: b9e833b83fdec2fbbc7258b8fc37e82d
+  size: 782659
+  hash: md5
+  path: svm_classifier.pkl
