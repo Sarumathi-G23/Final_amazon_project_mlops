@@ -1,0 +1,36 @@
+pipeline {
+    agent any
+    environment {
+        GIT_CREDENTIALS_ID = 'your-git-credentials-id'  // Use the ID from Jenkins credentials
+        REPO_URL = 'git@github.com:your-username/your-repo.git' // Use SSH URL for authentication
+    }
+    stages {
+        stage('Checkout Code') {
+            steps {
+                script {
+                    git credentialsId: GIT_CREDENTIALS_ID, url: REPO_URL, branch: 'main'
+                }
+            }
+        }
+        stage('Make Changes') {
+            steps {
+                script {
+                    sh 'echo "Some changes" >> changes.txt' // Modify files
+                }
+            }
+        }
+        stage('Commit and Push') {
+            steps {
+                script {
+                    sh """
+                        git config --global user.email "your-email@example.com"
+                        git config --global user.name "your-username"
+                        git add .
+                        git commit -m "Automated commit from Jenkins"
+                        git push origin main
+                    """
+                }
+            }
+        }
+    }
+}
