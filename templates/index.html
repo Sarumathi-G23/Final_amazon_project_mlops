@@ -1,16 +1,23 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Amazon Review Sentiment</title>
+    <style>
+        body { font-family: Arial, sans-serif; text-align: center; margin-top: 50px; }
+        input, button { padding: 10px; margin-top: 10px; }
+    </style>
 </head>
 <body>
     <h2>Amazon Review Sentiment Analysis</h2>
     <form action="/predict" method="post">
-        <textarea name="review" rows="4" cols="50" placeholder="Enter your review..."></textarea><br>
-        <button type="submit">Analyze Sentiment</button>
+        <input type="text" name="review" placeholder="Enter your review" required>
+        <button type="submit">Predict</button>
     </form>
-    {% if sentiment %}
-        <h3>Prediction: {{ sentiment }}</h3>
+    {% if review %}
+        <h3>Review: "{{ review }}"</h3>
+        <h3>Predicted Sentiment: <strong>{{ prediction }}</strong></h3>
     {% endif %}
 </body>
 </html>
